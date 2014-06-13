@@ -1,0 +1,8 @@
+- Mühsam war es den MP3 Player als DLL auszulagern damit Cristian darauf
+  zugreifen konnte.
+
+- Etwas nachschlagen hat die Einbindung eines 2D Arrays in eine „DataGridView“
+  Tabelle gebraucht.
+
+- Etwas Grübeln gab es auch bei der Begrenzung der Arraygrenzen um nicht beim „next“
+  und „previous“ Button „out of range” zu geraten.
