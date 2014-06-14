@@ -14,7 +14,7 @@ namespace YAM_Player
     {
         private int inow = 0, imax = 0;
         Random rand = new Random();
-        private string[,] playlist;
+        private List<List<string>> playlist = new List<List<string>>();
         
         public UserControl1()
         {
@@ -28,10 +28,10 @@ namespace YAM_Player
             setPlaylist(playlist);*/
         }
 
-        public void setPlaylist(String[,] playlist)
+        public void setPlaylist(List<List<string>> playlist)
         {
             int i = 0;
-            int y = playlist.GetLength(0);
+            int y = playlist.Count;
             wmp.Ctlcontrols.stop();
 
             do
@@ -52,9 +52,9 @@ namespace YAM_Player
             {
                 dgvsongs.Rows.Add(1);
                 dgvsongs.Rows[i].Cells[0].Value = i.ToString();
-                dgvsongs.Rows[i].Cells[1].Value = playlist[i, 1];
-                dgvsongs.Rows[i].Cells[2].Value = playlist[i, 2];
-                dgvsongs.Rows[i].Cells[3].Value = playlist[i, 3];
+                dgvsongs.Rows[i].Cells[1].Value = playlist[i][1];
+                dgvsongs.Rows[i].Cells[2].Value = playlist[i][2];
+                dgvsongs.Rows[i].Cells[3].Value = playlist[i][3];
             }
         }
 
@@ -64,7 +64,7 @@ namespace YAM_Player
             {
                 int selectedrowindex = dgvsongs.SelectedCells[1].RowIndex;
 
-                wmp.URL = playlist[selectedrowindex, 0];
+                wmp.URL = playlist[selectedrowindex][0];
                 tmruntime.Enabled = true;
             }
         }
