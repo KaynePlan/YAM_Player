@@ -7,6 +7,8 @@ namespace YAM_Player
 {
     public class Playlist
     {
+        public Playlist() { }
+
         public Playlist(string filepath, string titlename, int bitrate, long playtime)
         {
             this.Filepath = filepath;

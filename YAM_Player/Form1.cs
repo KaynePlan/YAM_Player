@@ -10,17 +10,22 @@ using WMPLib;
 
 namespace YAM_Player
 {
-    public partial class UserControl1 : Form
+    public partial class UserControl1 : UserControl
     {
         private int inow = 0, imax = 0;
         Random rand = new Random();
         private List<Playlist> playlist = new List<Playlist>();
 
-        
+        // Notwendiges Event um der WPF Anwendung eine Änderung mitzuteilen
+        public Action<Playlist> TriggerUpdateTitleEntry;   //Mod by Christian
+
+        // Notwendig um auf die Methoden zugreifen zu können
+        public UserControl1 GetUserControl() { return this; }   //Mod by Christian
+
         public UserControl1()
         {
             InitializeComponent();
-            
+
             wmp.Visible = false;
             wmp.settings.autoStart = false;
             // Nur zum Testen
@@ -37,7 +42,7 @@ namespace YAM_Player
 
             dgvsongs.Rows.Clear();  // löscht die alten Einträge in der Liste
 
-            for (i=0; i<y; i++)
+            for (i = 0; i < y; i++)
             {
                 dgvsongs.Rows.Add(1);
                 dgvsongs.Rows[i].Cells[0].Value = i.ToString();
@@ -45,16 +50,25 @@ namespace YAM_Player
                 dgvsongs.Rows[i].Cells[2].Value = playlist[i].Bitrate;
                 dgvsongs.Rows[i].Cells[3].Value = playlist[i].Playtime;
             }
+
+            // Interne Liste wurde nicht befüllt
+            this.playlist = playlist;   //Mod by Christian
         }
 
         private void dgvsongs_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvsongs.SelectedCells.Count > 0)
+            //if (dgvsongs.SelectedCells.Count > 0)
+            if (dgvsongs.SelectedRows.Count > 0)   //Mod by Christian
             {
                 int selectedrowindex = dgvsongs.SelectedCells[1].RowIndex;
 
-                wmp.URL = playlist[selectedrowindex].Filepath;
-                tmruntime.Enabled = true;
+                // Fehler beim Einfügen von Zeilen beim verwenden der setPlaylist Methode
+                if (selectedrowindex > 0)   //Mod by Christian
+                {
+                    wmp.URL = playlist[selectedrowindex].Filepath;
+                    TriggerUpdateTitleEntry(playlist[selectedrowindex]);
+                    tmruntime.Enabled = true;
+                }
             }
         }
 

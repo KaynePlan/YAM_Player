@@ -22,3 +22,16 @@ C:\Users\Hymera\Documents\GitHub\YAM_Player\YAM_Player\bin\Debug\AxInterop.WMPLi
 C:\Users\Hymera\Documents\GitHub\YAM_Player\YAM_Player\obj\x86\Debug\YAM_Player.UserControl1.resources
 C:\Users\Hymera\Documents\GitHub\YAM_Player\YAM_Player\obj\x86\Debug\YAM_Player.Properties.Resources.resources
 C:\Users\Hymera\Documents\GitHub\YAM_Player\YAM_Player\obj\x86\Debug\YAM_Player.csproj.GenerateResource.Cache
+D:\Eigene Dokumente\GitHub\YAM_Player\YAM_Player\bin\Debug\YAM_Player.dll
+D:\Eigene Dokumente\GitHub\YAM_Player\YAM_Player\bin\Debug\YAM_Player.pdb
+D:\Eigene Dokumente\GitHub\YAM_Player\YAM_Player\bin\Debug\Interop.WMPLib.dll
+D:\Eigene Dokumente\GitHub\YAM_Player\YAM_Player\bin\Debug\AxInterop.WMPLib.dll
+D:\Eigene Dokumente\GitHub\YAM_Player\YAM_Player\obj\x86\Debug\Interop.WMPLib.dll
+D:\Eigene Dokumente\GitHub\YAM_Player\YAM_Player\obj\x86\Debug\AxInterop.WMPLib.dll
+D:\Eigene Dokumente\GitHub\YAM_Player\YAM_Player\obj\x86\Debug\YAM_Player.csproj.ResolveComReference.cache
+D:\Eigene Dokumente\GitHub\YAM_Player\YAM_Player\obj\x86\Debug\YAM_Player.UserControl1.resources
+D:\Eigene Dokumente\GitHub\YAM_Player\YAM_Player\obj\x86\Debug\YAM_Player.Properties.Resources.resources
+D:\Eigene Dokumente\GitHub\YAM_Player\YAM_Player\obj\x86\Debug\YAM_Player.csproj.GenerateResource.Cache
+D:\Eigene Dokumente\GitHub\YAM_Player\YAM_Player\obj\x86\Debug\YAM_Player.dll
+D:\Eigene Dokumente\GitHub\YAM_Player\YAM_Player\obj\x86\Debug\YAM_Player.pdb
+D:\Eigene Dokumente\GitHub\YAM_Player\YAM_Player\obj\x86\Debug\YAM_Player.csprojResolveAssemblyReference.cache
