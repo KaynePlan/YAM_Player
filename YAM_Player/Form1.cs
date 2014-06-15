@@ -14,7 +14,8 @@ namespace YAM_Player
     {
         private int inow = 0, imax = 0;
         Random rand = new Random();
-        private List<List<string>> playlist = new List<List<string>>();
+        private List<Playlist> playlist = new List<Playlist>();
+
         
         public UserControl1()
         {
@@ -28,33 +29,21 @@ namespace YAM_Player
             setPlaylist(playlist);*/
         }
 
-        public void setPlaylist(List<List<string>> playlist)
+        public void setPlaylist(List<Playlist> playlist)
         {
             int i = 0;
             int y = playlist.Count;
             wmp.Ctlcontrols.stop();
 
-            do
-            {
-                foreach (DataGridViewRow row in dgvsongs.Rows)
-                {
-                    try
-                    {
-                        dgvsongs.Rows.Remove(row);  // löscht die alten Einträge in der Liste
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
-            } while (dgvsongs.Rows.Count > 0);
+            dgvsongs.Rows.Clear();  // löscht die alten Einträge in der Liste
 
             for (i=0; i<y; i++)
             {
                 dgvsongs.Rows.Add(1);
                 dgvsongs.Rows[i].Cells[0].Value = i.ToString();
-                dgvsongs.Rows[i].Cells[1].Value = playlist[i][1];
-                dgvsongs.Rows[i].Cells[2].Value = playlist[i][2];
-                dgvsongs.Rows[i].Cells[3].Value = playlist[i][3];
+                dgvsongs.Rows[i].Cells[1].Value = playlist[i].Titlename;
+                dgvsongs.Rows[i].Cells[2].Value = playlist[i].Bitrate;
+                dgvsongs.Rows[i].Cells[3].Value = playlist[i].Playtime;
             }
         }
 
@@ -64,7 +53,7 @@ namespace YAM_Player
             {
                 int selectedrowindex = dgvsongs.SelectedCells[1].RowIndex;
 
-                wmp.URL = playlist[selectedrowindex][0];
+                wmp.URL = playlist[selectedrowindex].Filepath;
                 tmruntime.Enabled = true;
             }
         }
@@ -91,24 +80,30 @@ namespace YAM_Player
 
         private void btprevious_Click(object sender, EventArgs e)
         {
-            if (dgvsongs.SelectedCells[1].RowIndex >= 1)
-                dgvsongs.Rows[dgvsongs.SelectedCells[1].RowIndex - 1].Selected = true;
+            if (dgvsongs.SelectedCells.Count > 0)
+            {
+                if (dgvsongs.SelectedCells[1].RowIndex >= 1)
+                    dgvsongs.Rows[dgvsongs.SelectedCells[1].RowIndex - 1].Selected = true;
 
-            wmp.Ctlcontrols.play();
+                wmp.Ctlcontrols.play();
 
-            tmruntime.Enabled = true;
+                tmruntime.Enabled = true;
+            }
         }
 
         private void btnext_Click(object sender, EventArgs e)
         {
-            int count = dgvsongs.Rows.Count - 2;
+            if (dgvsongs.SelectedCells.Count > 0)
+            {
+                int count = dgvsongs.Rows.Count - 2;
 
-            if (dgvsongs.SelectedCells[1].RowIndex <= count)
-                dgvsongs.Rows[dgvsongs.SelectedCells[1].RowIndex + 1].Selected = true;
+                if (dgvsongs.SelectedCells[1].RowIndex <= count)
+                    dgvsongs.Rows[dgvsongs.SelectedCells[1].RowIndex + 1].Selected = true;
 
-            wmp.Ctlcontrols.play();
+                wmp.Ctlcontrols.play();
 
-            tmruntime.Enabled = true;
+                tmruntime.Enabled = true;
+            }
         }
 
         private void btmute_Click(object sender, EventArgs e)
