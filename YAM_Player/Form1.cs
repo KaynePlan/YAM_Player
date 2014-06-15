@@ -36,19 +36,18 @@ namespace YAM_Player
 
         public void setPlaylist(List<Playlist> playlist)
         {
-            int i = 0;
             int y = playlist.Count;
             wmp.Ctlcontrols.stop();
 
             dgvsongs.Rows.Clear();  // löscht die alten Einträge in der Liste
 
-            for (i = 0; i < y; i++)
+            for (int i = 0; i < y; i++)
             {
                 dgvsongs.Rows.Add(1);
-                dgvsongs.Rows[i].Cells[0].Value = i.ToString();
+                dgvsongs.Rows[i].Cells[0].Value = (i + 1).ToString();   //Mod by Christian
                 dgvsongs.Rows[i].Cells[1].Value = playlist[i].Titlename;
                 dgvsongs.Rows[i].Cells[2].Value = playlist[i].Bitrate;
-                dgvsongs.Rows[i].Cells[3].Value = playlist[i].Playtime;
+                dgvsongs.Rows[i].Cells[3].Value = new TimeSpan((long)playlist[i].Playtime).ToString(@"mm\:ss");   //Mod by Christian
             }
 
             // Interne Liste wurde nicht befüllt
@@ -63,7 +62,7 @@ namespace YAM_Player
                 int selectedrowindex = dgvsongs.SelectedCells[1].RowIndex;
 
                 // Fehler beim Einfügen von Zeilen beim verwenden der setPlaylist Methode
-                if (selectedrowindex > 0)   //Mod by Christian
+                if (playlist.Count > 0)   //Mod by Christian
                 {
                     wmp.URL = playlist[selectedrowindex].Filepath;
                     TriggerUpdateTitleEntry(playlist[selectedrowindex]);

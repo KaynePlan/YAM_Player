@@ -120,6 +120,7 @@
             // 
             this.dgvsongs.AllowUserToAddRows = false;
             this.dgvsongs.AllowUserToDeleteRows = false;
+            this.dgvsongs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgvsongs.BackgroundColor = System.Drawing.Color.White;
             this.dgvsongs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvsongs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -133,6 +134,7 @@
             this.dgvsongs.Name = "dgvsongs";
             this.dgvsongs.ReadOnly = true;
             this.dgvsongs.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvsongs.RowHeadersVisible = false;
             this.dgvsongs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvsongs.Size = new System.Drawing.Size(624, 104);
             this.dgvsongs.TabIndex = 17;
@@ -145,7 +147,7 @@
             this.ColId.HeaderText = "#";
             this.ColId.Name = "ColId";
             this.ColId.ReadOnly = true;
-            this.ColId.Width = 20;
+            this.ColId.Width = 39;
             // 
             // ColTitlename
             // 
@@ -277,7 +279,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(648, 159);
             this.Controls.Add(this.wmp);
             this.Controls.Add(this.cbrand);
             this.Controls.Add(this.dgvsongs);
@@ -294,7 +295,7 @@
             this.Controls.Add(this.btstop);
             this.Controls.Add(this.btplay);
             this.Name = "UserControl1";
-            this.Text = "YAM";
+            this.Size = new System.Drawing.Size(648, 159);
             ((System.ComponentModel.ISupportInitialize)(this.tbvolume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbruntime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvsongs)).EndInit();
